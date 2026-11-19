@@ -59,7 +59,7 @@ class _PostCardState extends State<PostCard> {
         children: [
           ListTile(
             leading: CircleAvatar(
-              backgroundColor: Colors.green,
+              backgroundColor: Theme.of(context).colorScheme.primary,
               child: Text(
                 username.isEmpty ? '?' : username[0].toUpperCase(),
                 style: const TextStyle(color: Colors.white),
@@ -138,7 +138,7 @@ class _PostCardState extends State<PostCard> {
                 IconButton(
                   onPressed: addComment,
                   icon: const Icon(Icons.send),
-                  color: Colors.green,
+                  color: Theme.of(context).colorScheme.primary,
                   tooltip: 'Send comment',
                 ),
               ],

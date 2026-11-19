@@ -17,8 +17,8 @@ class SocialMediaPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Social Media'),
         centerTitle: true,
-        backgroundColor: Colors.orange,
-        foregroundColor: Colors.white,
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        foregroundColor: Theme.of(context).colorScheme.onPrimary,
       ),
       body: ListView(
         padding: const EdgeInsets.all(24),
@@ -35,10 +35,10 @@ class SocialMediaPage extends StatelessWidget {
           const SizedBox(height: 20),
           Card(
             child: ListTile(
-              leading: const Icon(Icons.facebook, color: Colors.blue),
+              leading: Icon(Icons.facebook, color: Theme.of(context).colorScheme.primary),
               title: const Text('Facebook'),
               subtitle: const Text('dionne.enola'),
-              trailing: const Icon(Icons.chevron_right, color: Colors.orange),
+              trailing: Icon(Icons.chevron_right, color: Theme.of(context).colorScheme.secondary),
               onTap: () => showAccount(context, 'Facebook: dionne.enola'),
             ),
           ),
@@ -47,7 +47,7 @@ class SocialMediaPage extends StatelessWidget {
               leading: const Icon(Icons.camera_alt, color: Colors.pink),
               title: const Text('Instagram'),
               subtitle: const Text('@dionne.enola'),
-              trailing: const Icon(Icons.chevron_right, color: Colors.orange),
+              trailing: Icon(Icons.chevron_right, color: Theme.of(context).colorScheme.secondary),
               onTap: () => showAccount(context, 'Instagram: @dionne.enola'),
             ),
           ),
@@ -56,7 +56,7 @@ class SocialMediaPage extends StatelessWidget {
               leading: const Icon(Icons.play_circle, color: Colors.red),
               title: const Text('YouTube'),
               subtitle: const Text('@DionneEnola'),
-              trailing: const Icon(Icons.chevron_right, color: Colors.orange),
+              trailing: Icon(Icons.chevron_right, color: Theme.of(context).colorScheme.secondary),
               onTap: () => showAccount(context, 'YouTube: @DionneEnola'),
             ),
           ),

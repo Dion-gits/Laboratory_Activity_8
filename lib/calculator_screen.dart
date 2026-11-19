@@ -8,195 +8,131 @@ class CalculatorScreen extends StatefulWidget {
 }
 
 class _CalculatorScreenState extends State<CalculatorScreen> {
-  final firstNumberController = TextEditingController();
-  final secondNumberController = TextEditingController();
+  final TextEditingController num1Controller = TextEditingController();
+  final TextEditingController num2Controller = TextEditingController();
 
-  String result = '0';
-  String operationLabel = 'Enter two numbers';
+  String result = '';
 
-  void calculate(String operation) {
-    final first = double.tryParse(firstNumberController.text.trim());
-    final second = double.tryParse(secondNumberController.text.trim());
+  void calculate(String op) {
+    final double? a = double.tryParse(num1Controller.text.trim());
+    final double? b = double.tryParse(num2Controller.text.trim());
 
-    if (first == null ||
-        second == null ||
-        !first.isFinite ||
-        !second.isFinite) {
-      setState(() {
-        result = 'Invalid input';
-        operationLabel = 'Please enter two valid numbers';
-      });
+    if (a == null || b == null) {
+      setState(() => result = 'Enter valid numbers.');
       return;
     }
 
-    if (operation == '÷' && second == 0) {
-      setState(() {
-        result = 'Cannot divide by zero';
-        operationLabel = 'Please change the second number';
-      });
-      return;
-    }
-
-    double answer;
-
-    switch (operation) {
+    double? value;
+    switch (op) {
       case '+':
-        answer = first + second;
+        value = a + b;
         break;
       case '-':
-        answer = first - second;
+        value = a - b;
         break;
-      case '×':
-        answer = first * second;
+      case '*':
+        value = a * b;
         break;
-      case '÷':
-        answer = first / second;
+      case '/':
+        if (b == 0) {
+          setState(() => result = 'Cannot divide by zero.');
+          return;
+        }
+        value = a / b;
         break;
-      default:
-        return;
     }
 
-    setState(() {
-      result = answer.toString();
-      operationLabel = '$first $operation $second';
-    });
+    setState(() => result = value!.toStringAsFixed(1));
   }
 
-  void clearCalculator() {
-    firstNumberController.clear();
-    secondNumberController.clear();
-
-    setState(() {
-      result = '0';
-      operationLabel = 'Enter two numbers';
-    });
+  void clear() {
+    num1Controller.clear();
+    num2Controller.clear();
+    setState(() => result = '');
   }
 
   @override
   void dispose() {
-    firstNumberController.dispose();
-    secondNumberController.dispose();
+    num1Controller.dispose();
+    num2Controller.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('My Stateful Calculator'),
-        centerTitle: true,
-        backgroundColor: Colors.orange,
-        foregroundColor: Colors.white,
-      ),
-      body: SingleChildScrollView(
+      appBar: AppBar(title: const Text('Calculator')),
+      body: ListView(
         padding: const EdgeInsets.all(24),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            const Icon(Icons.calculate, size: 64, color: Colors.orange),
-            const SizedBox(height: 12),
-            const Text(
-              'BASIC CALCULATOR',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
+        children: [
+          TextField(
+            controller: num1Controller,
+            keyboardType: TextInputType.number,
+            decoration: const InputDecoration(
+              labelText: 'First Number',
+              border: OutlineInputBorder(),
             ),
-            const SizedBox(height: 24),
-            TextField(
-              controller: firstNumberController,
-              keyboardType: const TextInputType.numberWithOptions(
-                decimal: true,
-                signed: true,
-              ),
-              decoration: const InputDecoration(
-                labelText: 'First Number',
-                hintText: 'Enter the first number',
-                prefixIcon: Icon(Icons.looks_one),
-                border: OutlineInputBorder(),
-              ),
+          ),
+          const SizedBox(height: 16),
+          TextField(
+            controller: num2Controller,
+            keyboardType: TextInputType.number,
+            decoration: const InputDecoration(
+              labelText: 'Second Number',
+              border: OutlineInputBorder(),
             ),
-            const SizedBox(height: 16),
-            TextField(
-              controller: secondNumberController,
-              keyboardType: const TextInputType.numberWithOptions(
-                decimal: true,
-                signed: true,
-              ),
-              decoration: const InputDecoration(
-                labelText: 'Second Number',
-                hintText: 'Enter the second number',
-                prefixIcon: Icon(Icons.looks_two),
-                border: OutlineInputBorder(),
-              ),
-            ),
-            const SizedBox(height: 24),
-            Wrap(
-              alignment: WrapAlignment.center,
-              spacing: 12,
-              runSpacing: 12,
-              children: [
-                ElevatedButton(
+          ),
+          const SizedBox(height: 24),
+          Row(
+            children: [
+              Expanded(
+                child: ElevatedButton(
                   onPressed: () => calculate('+'),
-                  child: const Text('+', style: TextStyle(fontSize: 24)),
+                  child: const Text('+'),
                 ),
-                ElevatedButton(
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: ElevatedButton(
                   onPressed: () => calculate('-'),
-                  child: const Text('−', style: TextStyle(fontSize: 24)),
+                  child: const Text('−'),
                 ),
-                ElevatedButton(
-                  onPressed: () => calculate('×'),
-                  child: const Text('×', style: TextStyle(fontSize: 24)),
-                ),
-                ElevatedButton(
-                  onPressed: () => calculate('÷'),
-                  child: const Text('÷', style: TextStyle(fontSize: 24)),
-                ),
-              ],
-            ),
-            const SizedBox(height: 24),
-            Container(
-              padding: const EdgeInsets.all(24),
-              decoration: BoxDecoration(
-                color: Colors.orange.shade50,
-                borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: Colors.orange),
               ),
-              child: Column(
-                children: [
-                  Text(operationLabel, textAlign: TextAlign.center),
-                  const SizedBox(height: 12),
-                  const Text(
-                    'RESULT',
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    result,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.orange,
-                    ),
-                  ),
-                ],
+              const SizedBox(width: 8),
+              Expanded(
+                child: ElevatedButton(
+                  onPressed: () => calculate('*'),
+                  child: const Text('×'),
+                ),
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: ElevatedButton(
+                  onPressed: () => calculate('/'),
+                  child: const Text('÷'),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 24),
+          Card(
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Text(
+                result.isEmpty ? 'Result: —' : 'Result: $result',
+                style: const TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
-            const SizedBox(height: 16),
-            OutlinedButton.icon(
-              onPressed: clearCalculator,
-              icon: const Icon(Icons.refresh),
-              label: const Text('Clear'),
-            ),
-            const SizedBox(height: 24),
-            const Text(
-              'Created by: Dionne Enola\nSection: CCE106 - 3447',
-              textAlign: TextAlign.center,
-            ),
-          ],
-        ),
+          ),
+          const SizedBox(height: 16),
+          OutlinedButton(
+            onPressed: clear,
+            child: const Text('Clear'),
+          ),
+        ],
       ),
     );
   }

@@ -75,8 +75,8 @@ class _SocialMediaPageState extends State<SocialMediaPage> {
             ),
       floatingActionButton: FloatingActionButton(
         onPressed: openCreatePostSheet,
-        backgroundColor: Colors.green,
-        foregroundColor: Colors.white,
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        foregroundColor: Theme.of(context).colorScheme.onPrimary,
         tooltip: 'Create Post',
         child: const Icon(Icons.add),
       ),

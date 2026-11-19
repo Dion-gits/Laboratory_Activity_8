@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'app_theme.dart';
 import 'login_screen.dart';
 
 void main() {
@@ -11,14 +13,9 @@ class StudentApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Student App',
       debugShowCheckedModeBanner: false,
-      title: 'Lab Activity',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.orange,
-        ),
-        useMaterial3: true,
-      ),
+      theme: buildAppTheme(),
       home: const LoginScreen(),
     );
   }

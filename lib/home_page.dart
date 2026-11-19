@@ -9,13 +9,17 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Home'),
         centerTitle: true,
-        backgroundColor: Colors.orange,
-        foregroundColor: Colors.white,
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        foregroundColor: Theme.of(context).colorScheme.onPrimary,
       ),
       body: ListView(
         padding: const EdgeInsets.all(24),
         children: [
-          const Icon(Icons.home, size: 80, color: Colors.orange),
+          Icon(
+            Icons.home,
+            size: 80,
+            color: Theme.of(context).colorScheme.primary,
+          ),
           const SizedBox(height: 16),
           const Text(
             'Welcome, Dionne!',
@@ -35,21 +39,30 @@ class HomePage extends StatelessWidget {
           const SizedBox(height: 24),
           Card(
             child: Column(
-              children: const [
+              children: [
                 ListTile(
-                  leading: Icon(Icons.calculate, color: Colors.orange),
+                  leading: Icon(
+                    Icons.calculate,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
                   title: Text('Calculator'),
                   subtitle: Text('Perform basic arithmetic operations.'),
                 ),
                 Divider(height: 1),
                 ListTile(
-                  leading: Icon(Icons.person, color: Colors.orange),
+                  leading: Icon(
+                    Icons.person,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
                   title: Text('Profile'),
                   subtitle: Text('View your student information.'),
                 ),
                 Divider(height: 1),
                 ListTile(
-                  leading: Icon(Icons.share, color: Colors.orange),
+                  leading: Icon(
+                    Icons.share,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
                   title: Text('Social Media'),
                   subtitle: Text('View your sample social accounts.'),
                 ),

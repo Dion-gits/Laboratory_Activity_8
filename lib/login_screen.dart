@@ -63,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
           padding: const EdgeInsets.all(20),
           children: [
             const SizedBox(height: 20),
-            const Icon(Icons.lock_outline, size: 80, color: Colors.green),
+            Icon(Icons.lock_outline, size: 80, color: Theme.of(context).colorScheme.primary),
             const SizedBox(height: 30),
             TextFormField(
               controller: usernameController,
