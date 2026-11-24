@@ -128,10 +128,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
             ),
           ),
           const SizedBox(height: 16),
-          OutlinedButton(
-            onPressed: clear,
-            child: const Text('Clear'),
-          ),
+          OutlinedButton(onPressed: clear, child: const Text('Clear')),
         ],
       ),
     );

@@ -29,15 +29,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
       return;
     }
 
-    DemoAuth.register(
-      usernameController.text.trim(),
-      passwordController.text,
-    );
+    DemoAuth.register(usernameController.text.trim(), passwordController.text);
 
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Account registered. You can log in now.'),
-      ),
+      const SnackBar(content: Text('Account registered. You can log in now.')),
     );
 
     Navigator.of(context).pop();
@@ -46,9 +41,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Register'),
-      ),
+      appBar: AppBar(title: const Text('Register')),
       body: Form(
         key: _formKey,
         child: ListView(
@@ -106,10 +99,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               },
             ),
             const SizedBox(height: 24),
-            ElevatedButton(
-              onPressed: register,
-              child: const Text('Register'),
-            ),
+            ElevatedButton(onPressed: register, child: const Text('Register')),
           ],
         ),
       ),

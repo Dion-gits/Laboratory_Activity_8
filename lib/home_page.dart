@@ -24,10 +24,7 @@ class HomePage extends StatelessWidget {
           const Text(
             'Welcome, Dionne!',
             textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 26,
-              fontWeight: FontWeight.bold,
-            ),
+            style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 12),
           const Text(

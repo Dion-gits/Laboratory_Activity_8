@@ -5,10 +5,7 @@ import 'post.dart';
 class PostCard extends StatefulWidget {
   final Post post;
 
-  const PostCard({
-    super.key,
-    required this.post,
-  });
+  const PostCard({super.key, required this.post});
 
   @override
   State<PostCard> createState() => _PostCardState();
@@ -87,11 +84,7 @@ class _PostCardState extends State<PostCard> {
               return const SizedBox(
                 height: 220,
                 child: Center(
-                  child: Icon(
-                    Icons.broken_image,
-                    size: 70,
-                    color: Colors.grey,
-                  ),
+                  child: Icon(Icons.broken_image, size: 70, color: Colors.grey),
                 ),
               );
             },

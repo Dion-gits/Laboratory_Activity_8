@@ -38,15 +38,11 @@ class _LoginScreenState extends State<LoginScreen> {
 
     if (isValid) {
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (context) => const MainScreen(),
-        ),
+        MaterialPageRoute(builder: (context) => const MainScreen()),
       );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Invalid username or password.'),
-        ),
+        const SnackBar(content: Text('Invalid username or password.')),
       );
     }
   }
@@ -54,16 +50,18 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Login'),
-      ),
+      appBar: AppBar(title: const Text('Login')),
       body: Form(
         key: _formKey,
         child: ListView(
           padding: const EdgeInsets.all(20),
           children: [
             const SizedBox(height: 20),
-            Icon(Icons.lock_outline, size: 80, color: Theme.of(context).colorScheme.primary),
+            Icon(
+              Icons.lock_outline,
+              size: 80,
+              color: Theme.of(context).colorScheme.primary,
+            ),
             const SizedBox(height: 30),
             TextFormField(
               controller: usernameController,
@@ -89,9 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 border: const OutlineInputBorder(),
                 suffixIcon: IconButton(
                   icon: Icon(
-                    obscurePassword
-                        ? Icons.visibility
-                        : Icons.visibility_off,
+                    obscurePassword ? Icons.visibility : Icons.visibility_off,
                   ),
                   onPressed: () {
                     setState(() {
@@ -108,10 +104,7 @@ class _LoginScreenState extends State<LoginScreen> {
               },
             ),
             const SizedBox(height: 24),
-            ElevatedButton(
-              onPressed: login,
-              child: const Text('Login'),
-            ),
+            ElevatedButton(onPressed: login, child: const Text('Login')),
             const SizedBox(height: 12),
             TextButton(
               onPressed: () {

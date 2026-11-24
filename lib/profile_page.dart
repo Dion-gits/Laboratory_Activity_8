@@ -6,18 +6,13 @@ import 'login_screen.dart';
 class ProfilePage extends StatelessWidget {
   final String username;
 
-  const ProfilePage({
-    super.key,
-    required this.username,
-  });
+  const ProfilePage({super.key, required this.username});
 
   void logout(BuildContext context) {
     DemoAuth.logout();
 
     Navigator.of(context).pushAndRemoveUntil(
-      MaterialPageRoute(
-        builder: (context) => const LoginScreen(),
-      ),
+      MaterialPageRoute(builder: (context) => const LoginScreen()),
       (route) => false,
     );
   }
@@ -25,9 +20,7 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Student Profile'),
-      ),
+      appBar: AppBar(title: const Text('Student Profile')),
       body: ListView(
         padding: const EdgeInsets.all(24),
         children: [
@@ -44,16 +37,10 @@ class ProfilePage extends StatelessWidget {
           const Text(
             'DIONNE ENOLA',
             textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
+            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 8),
-          Text(
-            'Logged in as: $username',
-            textAlign: TextAlign.center,
-          ),
+          Text('Logged in as: $username', textAlign: TextAlign.center),
           const SizedBox(height: 24),
           const Card(
             child: Column(

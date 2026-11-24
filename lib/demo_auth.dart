@@ -4,8 +4,7 @@ class DemoAuth {
   static String? currentUsername;
 
   static bool login(String username, String password) {
-    final isAdmin =
-        username == 'admin' && password == 'admin123';
+    final isAdmin = username == 'admin' && password == 'admin123';
 
     final isRegisteredUser =
         registeredUsername != null &&

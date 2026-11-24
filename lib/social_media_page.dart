@@ -4,11 +4,8 @@ class SocialMediaPage extends StatelessWidget {
   const SocialMediaPage({super.key});
 
   void showAccount(BuildContext context, String account) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Selected account: $account'),
-      ),
-    );
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text('Selected account: $account')));
   }
 
   @override
@@ -25,20 +22,23 @@ class SocialMediaPage extends StatelessWidget {
         children: [
           const Text(
             'Connect With Me',
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
+            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 8),
           const Text('Tap an account to display its username.'),
           const SizedBox(height: 20),
           Card(
             child: ListTile(
-              leading: Icon(Icons.facebook, color: Theme.of(context).colorScheme.primary),
+              leading: Icon(
+                Icons.facebook,
+                color: Theme.of(context).colorScheme.primary,
+              ),
               title: const Text('Facebook'),
               subtitle: const Text('dionne.enola'),
-              trailing: Icon(Icons.chevron_right, color: Theme.of(context).colorScheme.secondary),
+              trailing: Icon(
+                Icons.chevron_right,
+                color: Theme.of(context).colorScheme.secondary,
+              ),
               onTap: () => showAccount(context, 'Facebook: dionne.enola'),
             ),
           ),
@@ -47,7 +47,10 @@ class SocialMediaPage extends StatelessWidget {
               leading: const Icon(Icons.camera_alt, color: Colors.pink),
               title: const Text('Instagram'),
               subtitle: const Text('@dionne.enola'),
-              trailing: Icon(Icons.chevron_right, color: Theme.of(context).colorScheme.secondary),
+              trailing: Icon(
+                Icons.chevron_right,
+                color: Theme.of(context).colorScheme.secondary,
+              ),
               onTap: () => showAccount(context, 'Instagram: @dionne.enola'),
             ),
           ),
@@ -56,7 +59,10 @@ class SocialMediaPage extends StatelessWidget {
               leading: const Icon(Icons.play_circle, color: Colors.red),
               title: const Text('YouTube'),
               subtitle: const Text('@DionneEnola'),
-              trailing: Icon(Icons.chevron_right, color: Theme.of(context).colorScheme.secondary),
+              trailing: Icon(
+                Icons.chevron_right,
+                color: Theme.of(context).colorScheme.secondary,
+              ),
               onTap: () => showAccount(context, 'YouTube: @DionneEnola'),
             ),
           ),

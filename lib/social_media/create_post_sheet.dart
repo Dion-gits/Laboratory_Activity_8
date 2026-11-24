@@ -5,10 +5,7 @@ import 'post.dart';
 class CreatePostSheet extends StatefulWidget {
   final String username;
 
-  const CreatePostSheet({
-    super.key,
-    required this.username,
-  });
+  const CreatePostSheet({super.key, required this.username});
 
   @override
   State<CreatePostSheet> createState() => _CreatePostSheetState();
@@ -37,9 +34,7 @@ class _CreatePostSheetState extends State<CreatePostSheet> {
         !uri.hasAuthority ||
         (uri.scheme != 'https' && uri.scheme != 'http')) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Enter a valid HTTP or HTTPS image URL.'),
-        ),
+        const SnackBar(content: Text('Enter a valid HTTP or HTTPS image URL.')),
       );
       return;
     }
@@ -76,10 +71,7 @@ class _CreatePostSheetState extends State<CreatePostSheet> {
           children: [
             const Text(
               'Create Post',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 20),
             TextField(
